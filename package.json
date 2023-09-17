@@ -44,8 +44,7 @@
         }
     },
     "activationEvents": [
-        "onLanguage:python",
-        "workspaceContains:*.py"
+        "onLanguage:woowoo"
     ],
     "main": "./dist/extension.js",
     "scripts": {
@@ -62,6 +61,18 @@
         "vsce-package": "vsce package -o woowoo-vscode.vsix"
     },
     "contributes": {
+        "languages": [
+            {
+                "id": "woowoo",
+                "extensions": [
+                    ".woo"
+                ],
+                "name": "WooWoo",
+                "aliases": [
+                    "WooWoo"
+                ]
+            }
+        ],
         "configuration": {
             "properties": {
                 "woowoo-vscode.args": {
