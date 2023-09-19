@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 import * as vscode from 'vscode';
+import * as child_process from 'child_process';
 import { LanguageClient } from 'vscode-languageclient/node';
 import { registerLogger, traceError, traceLog, traceVerbose } from './common/log/logging';
 import {
@@ -18,12 +19,16 @@ import { getLSClientTraceLevel } from './common/utilities';
 import { createOutputChannel, onDidChangeConfiguration, registerCommand } from './common/vscodeapi';
 
 let lsClient: LanguageClient | undefined;
+
+
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     // This is required to get server name and module. This should be
     // the first thing that we do in this extension.
     const serverInfo = loadServerDefaults();
     const serverName = serverInfo.name;
     const serverId = serverInfo.module;
+
+    // TODO: NEED TO INSTALL TREE_SITTER - IT CAN NOT BE A NORMAL DEPENDENCY, BECAUSE IT DOWNLOADS BINARY CODE
 
     // Setup logging
     const outputChannel = createOutputChannel(serverName);
@@ -67,9 +72,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
         traceError(
             'Python interpreter missing:\r\n' +
-                '[Option 1] Select python interpreter using the ms-python.python.\r\n' +
-                `[Option 2] Set an interpreter using "${serverId}.interpreter" setting.\r\n` +
-                'Please use Python 3.7 or greater.',
+            '[Option 1] Select python interpreter using the ms-python.python.\r\n' +
+            `[Option 2] Set an interpreter using "${serverId}.interpreter" setting.\r\n` +
+            'Please use Python 3.7 or greater.',
         );
     };
 

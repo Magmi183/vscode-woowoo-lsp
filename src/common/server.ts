@@ -15,7 +15,6 @@ import { traceError, traceInfo, traceVerbose } from './log/logging';
 import { getDebuggerPath } from './python';
 import { getExtensionSettings, getGlobalSettings, getWorkspaceSettings, ISettings } from './settings';
 import { getLSClientTraceLevel, getProjectRoot } from './utilities';
-import { isVirtualWorkspace } from './vscodeapi';
 
 export type IInitOptions = { settings: ISettings[]; globalSettings: ISettings };
 
@@ -59,15 +58,8 @@ async function createServer(
 
     // Options to control the language client
     const clientOptions: LanguageClientOptions = {
-        // Register the server for python documents
-        documentSelector: isVirtualWorkspace()
-            ? [{ language: 'python' }]
-            : [
-                  { scheme: 'file', language: 'python' },
-                  { scheme: 'untitled', language: 'python' },
-                  { scheme: 'vscode-notebook', language: 'python' },
-                  { scheme: 'vscode-notebook-cell', language: 'python' },
-              ],
+        // Register the server for woowoo documents
+        documentSelector: [{ scheme: 'file', language: 'woowoo' }],
         outputChannel: outputChannel,
         traceOutputChannel: outputChannel,
         revealOutputChannelOn: RevealOutputChannelOn.Never,

@@ -1,0 +1,6 @@
+[submodule "bundled/tool/woowoo-language-server"]
+	path = bundled/tool/woowoo-language-server
+	url = git@gitlab.fit.cvut.cz:janecmi9/woowoo-language-server.git
+[submodule "bundled/tool/woowoo_pygls"]
+	path = bundled/tool/woowoo_pygls
+	url = git@gitlab.fit.cvut.cz:janecmi9/woowoo-language-server.git

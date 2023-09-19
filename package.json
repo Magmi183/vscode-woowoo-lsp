@@ -1,38 +1,27 @@
 {
     "name": "woowoo-vscode",
     "displayName": "WooWoo VSCode",
-    "description": "Linting support for python files using `woowoo-vscode`.",
-    "version": "2022.0.0-dev",
+    "description": "The WooWoo language server.",
+    "version": "2023.0.0-dev",
     "preview": true,
     "serverInfo": {
         "name": "WooWoo VSCode",
         "module": "woowoo-vscode"
     },
-    "publisher": "<my-publisher>",
-    "license": "MIT",
-    "homepage": "https://github.com/<my-github>/<my-extension-project>",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/<my-github>/<my-extension-project>.git"
-    },
-    "bugs": {
-        "url": "https://github.com/<my-github>/<my-extension-project>/issues"
-    },
+    "publisher": "todo-publisher",
     "galleryBanner": {
         "color": "#1e415e",
         "theme": "dark"
     },
     "keywords": [
-        "python",
-        "woowoo-vscode"
+        "woowoo"
     ],
     "engines": {
         "vscode": "^1.78.0"
     },
     "categories": [
         "Programming Languages",
-        "Linters",
-        "Formatters"
+        "Linters"
     ],
     "extensionDependencies": [
         "ms-python.python"
@@ -44,7 +33,8 @@
         }
     },
     "activationEvents": [
-        "onLanguage:woowoo"
+        "onLanguage:woowoo",
+        "workspaceContains:*.woo"
     ],
     "main": "./dist/extension.js",
     "scripts": {

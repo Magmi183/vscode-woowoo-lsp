@@ -11,5 +11,6 @@
 # Required packages
 pygls
 packaging
+# tree_sitter
 
 # TODO: Add your tool here
