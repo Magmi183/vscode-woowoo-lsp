@@ -4,7 +4,7 @@
 import * as vscode from 'vscode';
 import * as child_process from 'child_process';
 import { LanguageClient } from 'vscode-languageclient/node';
-import { registerLogger, traceError, traceLog, traceVerbose } from './common/log/logging';
+import { registerLogger, traceInfo, traceError, traceLog, traceVerbose } from './common/log/logging';
 import {
     checkVersion,
     getInterpreterDetails,
@@ -20,6 +20,25 @@ import { createOutputChannel, onDidChangeConfiguration, registerCommand } from '
 
 let lsClient: LanguageClient | undefined;
 
+function installTreeSitter(interpreterPath: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        const command = `${interpreterPath} -m pip install tree_sitter`;
+        child_process.exec(command, (error, stdout, stderr) => {
+            if (error) {
+                traceError(`Error installing tree_sitter: ${error}`);
+                reject(error);
+                return;
+            }
+            if (stderr) {
+                traceInfo(`Non-error stderr while installing tree_sitter: ${stderr}`);
+            }
+            else {
+                traceInfo(`tree_sitter installed: ${stdout}`);
+            }
+            resolve();
+        });
+    });
+}
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     // This is required to get server name and module. This should be
@@ -27,8 +46,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     const serverInfo = loadServerDefaults();
     const serverName = serverInfo.name;
     const serverId = serverInfo.module;
-
-    // TODO: NEED TO INSTALL TREE_SITTER - IT CAN NOT BE A NORMAL DEPENDENCY, BECAUSE IT DOWNLOADS BINARY CODE
 
     // Setup logging
     const outputChannel = createOutputChannel(serverName);
@@ -52,6 +69,19 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     traceLog(`Name: ${serverInfo.name}`);
     traceLog(`Module: ${serverInfo.module}`);
     traceVerbose(`Full Server Info: ${JSON.stringify(serverInfo)}`);
+
+
+    // Install tree_sitter - must be done on the client
+    try {
+        const interpreterDetails = await getInterpreterDetails();
+        if (interpreterDetails.path !== undefined) {
+            await installTreeSitter(interpreterDetails.path.join(' '));
+        }
+    } catch (error) {
+        console.error(`Failed to install package: ${error}`);
+        return; // If tree_sitter installation fails, stop the activation process.
+    }
+
 
     const runServer = async () => {
         const interpreter = getInterpreterFromSetting(serverId);
