@@ -20,6 +20,7 @@ import { createOutputChannel, onDidChangeConfiguration, registerCommand } from '
 
 let lsClient: LanguageClient | undefined;
 
+/*
 function installTreeSitter(interpreterPath: string): Promise<void> {
     return new Promise((resolve, reject) => {
         const command = `${interpreterPath} -m pip install tree_sitter`;
@@ -38,7 +39,34 @@ function installTreeSitter(interpreterPath: string): Promise<void> {
             resolve();
         });
     });
+}*/
+
+function isTreeSitterInstalled(interpreterPath: string): Promise<boolean> {
+    return new Promise((resolve) => {
+        const command = `${interpreterPath} -c "import tree_sitter"`;
+        child_process.exec(command, (error) => {
+            if (error) {
+                resolve(false);
+                return;
+            }
+            resolve(true);
+        });
+    });
 }
+
+
+async function ensureTreeSitterInstalled(interpreterPath: string): Promise<void> {
+    const isInstalled = await isTreeSitterInstalled(interpreterPath);
+    if (!isInstalled) {
+        vscode.window.showWarningMessage(
+            'The tree_sitter package is not installed in the current Python environment. Please install it manually.'
+        );
+        throw new Error('tree_sitter not installed');  // Throw an error here
+    } else {
+        traceInfo('tree_sitter is already installed.');
+    }
+}
+
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     // This is required to get server name and module. This should be
@@ -75,10 +103,10 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     try {
         const interpreterDetails = await getInterpreterDetails();
         if (interpreterDetails.path !== undefined) {
-            await installTreeSitter(interpreterDetails.path.join(' '));
+            await ensureTreeSitterInstalled(interpreterDetails.path.join(' '));
         }
     } catch (error) {
-        console.error(`Failed to install package: ${error}`);
+        console.error(`Failed to launch: ${error}`);
         return; // If tree_sitter installation fails, stop the activation process.
     }
 
