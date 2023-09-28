@@ -58,6 +58,7 @@
                 "extensions": [
                     ".woo"
                 ],
+                "configuration": "./language-configuration.json",
                 "name": "WooWoo",
                 "aliases": [
                     "WooWoo"
