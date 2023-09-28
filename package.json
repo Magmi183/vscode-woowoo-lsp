@@ -2,13 +2,14 @@
     "name": "woowoo-vscode",
     "displayName": "WooWoo VSCode",
     "description": "The WooWoo language server.",
+    "icon": "images/woo-ghost.png",
     "version": "2023.0.0-dev",
     "preview": true,
     "serverInfo": {
         "name": "WooWoo VSCode",
         "module": "woowoo-vscode"
     },
-    "publisher": "todo-publisher",
+    "publisher": "michal-janecek",
     "galleryBanner": {
         "color": "#1e415e",
         "theme": "dark"
