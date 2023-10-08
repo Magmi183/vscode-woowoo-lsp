@@ -99,17 +99,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     traceVerbose(`Full Server Info: ${JSON.stringify(serverInfo)}`);
 
 
-    // Install tree_sitter - must be done on the client
-    try {
-        const interpreterDetails = await getInterpreterDetails();
-        if (interpreterDetails.path !== undefined) {
-            await ensureTreeSitterInstalled(interpreterDetails.path.join(' '));
-        }
-    } catch (error) {
-        console.error(`Failed to launch: ${error}`);
-        return; // If tree_sitter installation fails, stop the activation process.
-    }
-
 
     const runServer = async () => {
         const interpreter = getInterpreterFromSetting(serverId);
@@ -149,6 +138,19 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             await runServer();
         }),
     );
+    
+    
+    // Install tree_sitter - must be done on the client
+    try {
+        const interpreterDetails = await getInterpreterDetails();
+        if (interpreterDetails.path !== undefined) {
+            await ensureTreeSitterInstalled(interpreterDetails.path.join(' '));
+        }
+    } catch (error) {
+        console.error(`Failed to launch: ${error}`);
+        return; // If tree_sitter installation fails, stop the activation process.
+    }
+
 
     setImmediate(async () => {
         const interpreter = getInterpreterFromSetting(serverId);
