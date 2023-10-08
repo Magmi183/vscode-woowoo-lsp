@@ -3,7 +3,7 @@
     "displayName": "WooWoo VSCode",
     "description": "The WooWoo language server.",
     "icon": "images/woo-ghost.png",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "preview": true,
     "serverInfo": {
         "name": "WooWoo VSCode",
