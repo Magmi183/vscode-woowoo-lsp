@@ -2,8 +2,8 @@
     "name": "woowoo-vscode",
     "displayName": "WooWoo VSCode",
     "description": "The WooWoo language server.",
-    "icon": "images/woo-ghost.png",
-    "version": "1.0.5",
+    "icon": "images/woowoo_black.png",
+    "version": "1.0.7",
     "preview": true,
     "serverInfo": {
         "name": "WooWoo VSCode",
@@ -65,6 +65,20 @@
                 ]
             }
         ],
+        "semanticTokenScopes": [
+            {
+              "scopes": {
+                "namespace": ["entity.name.type.class"],
+                "type": ["entity.name.type.class"],
+                "typeParameter": ["entity.name.type.class"],
+                "enumMember": ["entity.name.type.enum"],
+                "event": ["entity.name.function"],
+                "macro": ["entity.name.function"],
+                "regexp": ["string"],
+                "decorator": ["modifier"]
+              }
+            }
+          ],
         "configuration": {
             "properties": {
                 "woowoo-vscode.args": {

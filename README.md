@@ -19,3 +19,12 @@ Please follow these steps to setup the extension:
 
 Please visit [the official WooWoo Language Server repository](https://gitlab.fit.cvut.cz/woowoo/lsp/woowoo-language-server) to see the full list of features.
 
+## Theme Choice and Semantic Highlighting
+
+The choice of theme in VSCode plays a pivotal role in the semantic highlighting experience provided by WooWoo LS. Some themes might use the same color for various token types, which could lead to suboptimal highlighting when working with WooWoo documents.
+
+To get the best highlighting experience, we recommend experimenting with different themes. 
+You can change your theme by selecting the `Preferences: Color theme` command from the **command menu**. 
+Here are a few that we've found to work particularly well with WooWoo LS:
+- Monokai Dimmed
+- [More recommendations coming soon]
