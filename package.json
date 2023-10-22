@@ -65,6 +65,13 @@
                 ]
             }
         ],
+        "grammars": [
+            {
+                "language": "woowoo",  
+                "scopeName": "text.woo",  
+                "path": "./syntaxes/woo.json"
+            }
+        ],
         "semanticTokenScopes": [
             {
               "scopes": {
