@@ -13,3 +13,4 @@ bundled/libs/
 **/.vs
 **/.DS_Store
 .vscode/
+**/tmp/

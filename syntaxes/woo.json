@@ -34,7 +34,7 @@
     ],
     "repository": {
         "documentPartStart": {
-            "match": "^(\\.)([A-Z]\\w+)\\s+([^\\n]+)$",
+            "match": "^(\\.)([A-Z]\\w+)\\s+([^\\n]+)",
             "captures": {
                 "1": {
                     "name": "keyword.operator"
@@ -80,7 +80,7 @@
             "name": "string"
         },
         "verboseEnvType": {
-            "match": "(\"?)([\\.#@])([A-Za-z0-9_-]+)((\\.)?(\\w+))?",
+            "match": "(\")([\\.#@])([A-Za-z0-9_-]+)((\\.)?(\\w+))?",
             "captures": {
                 "1": {
                     "name": "string"
@@ -122,17 +122,17 @@
         "outer": {
             "match": "^(\\s*)([\\.!])([a-z]+)(:)(\\s*)$",
             "captures": {
-                "2": {
-                    "name": "keyword.operator"
-                },
-                "3": {
-                    "name": "entity.name.type"
-                },
-                "4": {
-                    "name": "keyword.operator"
-                }
+              "2": {
+                "name": "keyword.operator"
+              },
+              "3": {
+                "name": "entity.name.type"
+              },
+              "4": {
+                "name": "keyword.operator"
+              }
             }
-        },
+          },
         "mathEnv": {
             "match": "(\\$)([^$]+)(\\$)",
             "captures": {
@@ -150,13 +150,6 @@
         "comment": {
             "match": "^%.*$",
             "name": "comment.line"
-        },
-        "metablock": {
-            "patterns": [
-                {
-                    "include": "source.yaml"
-                }
-            ]
         }
     }
 }
