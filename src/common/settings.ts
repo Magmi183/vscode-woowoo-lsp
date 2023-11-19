@@ -112,3 +112,8 @@ export function checkIfConfigurationChanged(e: ConfigurationChangeEvent, namespa
     const changed = settings.map((s) => e.affectsConfiguration(s));
     return changed.includes(true);
 }
+
+export function getTemplateFilePath(namespace: string, scope?: ConfigurationScope): string {
+    const config = getConfiguration(namespace, scope);
+    return config.get<string>('template_file_path', '');
+}

@@ -88,14 +88,11 @@
           ],
         "configuration": {
             "properties": {
-                "woowoo-vscode.args": {
-                    "default": [],
-                    "description": "Arguments passed in. Each argument is a separate item in the array.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "scope": "resource",
-                    "type": "array"
+                "woowoo-vscode.template_file_path": {
+                    "default": "",
+                    "description": "Path to the template that will be used in the LSP.",
+                    "type" : "string",
+                    "scope": "resource"
                 },
                 "woowoo-vscode.path": {
                     "default": [],

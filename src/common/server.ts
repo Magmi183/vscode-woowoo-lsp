@@ -13,7 +13,13 @@ import {
 import { DEBUG_SERVER_SCRIPT_PATH, SERVER_SCRIPT_PATH } from './constants';
 import { traceError, traceInfo, traceVerbose } from './log/logging';
 import { getDebuggerPath } from './python';
-import { getExtensionSettings, getGlobalSettings, getWorkspaceSettings, ISettings } from './settings';
+import {
+    getExtensionSettings,
+    getGlobalSettings,
+    getWorkspaceSettings,
+    ISettings,
+    getTemplateFilePath,
+} from './settings';
 import { getLSClientTraceLevel, getProjectRoot } from './utilities';
 
 export type IInitOptions = { settings: ISettings[]; globalSettings: ISettings };
@@ -84,11 +90,21 @@ export async function restartServer(
     }
     const projectRoot = await getProjectRoot();
     const workspaceSetting = await getWorkspaceSettings(serverId, projectRoot, true);
+    const templateFilePath = getTemplateFilePath(serverId, projectRoot);
 
-    const newLSClient = await createServer(workspaceSetting, serverId, serverName, outputChannel, {
+    const initializationOptions = {
+        templateFilePath: templateFilePath,
         settings: await getExtensionSettings(serverId, true),
         globalSettings: await getGlobalSettings(serverId, false),
-    });
+    };
+
+    const newLSClient = await createServer(
+        workspaceSetting,
+        serverId,
+        serverName,
+        outputChannel,
+        initializationOptions,
+    );
     traceInfo(`Server: Start requested.`);
     _disposables.push(
         newLSClient.onDidChangeState((e) => {

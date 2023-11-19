@@ -63,6 +63,8 @@ if __name__ == "__main__":
     update_sys_path(os.fspath(BUNDLE_DIR / "libs"))
 
     server_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'woowoo_pygls')
+    server_path_template = os.path.join(server_path, 'template_manager')
     update_sys_path(server_path)
+    update_sys_path(server_path_template)
 
     main()
