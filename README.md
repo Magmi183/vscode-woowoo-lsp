@@ -6,8 +6,13 @@ This extension brings the WooWoo Language Server to VSCode. In addition to that 
 
 Please follow these steps to setup the extension:
 
-1. Ensure that you have C compiler installed on your system.
-    - The extension uses [tree-sitter](https://github.com/tree-sitter/tree-sitter) for parsing, which requires the compiler. It will try to look for the compiler in the standard places for each platform.
+1. **System compatibility**
+    - Unless you are running the extension on one of the following systems, you need to have a C++ compiler installed.
+    - Supported systems (no need for compiler):
+        - Windows x64
+        - Linux x64
+        - *more coming soon*
+        
 2. Install the `tree-sitter` Python package. You can install it into Python virtual environment, system Python or any other Python interpreter you have.
 3. Install the extension from the marketplace 
 4. Open the **command menu** and search for `Python: Select interpreter` command
@@ -25,8 +30,3 @@ Please visit [the official WooWoo Language Server repository](https://gitlab.fit
 
 The choice of theme in VSCode plays a pivotal role in the semantic highlighting experience provided by the WooWoo LS. Some themes might use the same color for various token types, which could lead to suboptimal highlighting when working with WooWoo documents.
 
-To get the best highlighting experience, we recommend experimenting with different themes. 
-You can change your theme by selecting the `Preferences: Color theme` command from the **command menu**. 
-Here are a few that we've found to work particularly well with WooWoo LS:
-- Monokai Dimmed
-- [More recommendations coming soon]

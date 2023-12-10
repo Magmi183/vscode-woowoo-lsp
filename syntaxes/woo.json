@@ -68,7 +68,7 @@
                     "name": "keyword.operator"
                 },
                 "2": {
-                    "name": "entity.name.type.struct"
+                    "name": "storage.type"
                 },
                 "3": {
                     "name": "keyword.operator"
@@ -126,7 +126,7 @@
                 "name": "keyword.operator"
               },
               "3": {
-                "name": "entity.name.type"
+                "name": "variable.other.global"
               },
               "4": {
                 "name": "keyword.operator"
