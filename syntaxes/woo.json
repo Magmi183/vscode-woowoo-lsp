@@ -20,6 +20,9 @@
             "include": "#shortEnv"
         },
         {
+            "include": "#shorthandEnv"
+        },
+        {
             "include": "#outer"
         },
         {
@@ -80,7 +83,7 @@
             "name": "string"
         },
         "verboseEnvType": {
-            "match": "(\")([\\.#@])([A-Za-z0-9_-]+)((\\.)?(\\w+))?",
+            "match": "(\")(\\.)([A-Za-z0-9_-]+)((\\.)?(\\w+))?",
             "captures": {
                 "1": {
                     "name": "string"
@@ -99,6 +102,20 @@
                 },
                 "6": {
                     "name": "entity.name.function.modifier"
+                }
+            }
+        },
+        "shorthandEnv": {
+            "match": "(\")([#@])([A-Za-z0-9_-]+)",
+            "captures": {
+                "1": {
+                    "name": "string"
+                },
+                "2": {
+                    "name": "entity.name.function"
+                },
+                "3": {
+                    "name": "variable.parameter"
                 }
             }
         },
