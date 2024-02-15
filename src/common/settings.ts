@@ -113,7 +113,7 @@ export function checkIfConfigurationChanged(e: ConfigurationChangeEvent, namespa
     return changed.includes(true);
 }
 
-export function getTemplateFilePath(namespace: string, scope?: ConfigurationScope): string {
+export function getDialectFilePath(namespace: string, scope?: ConfigurationScope): string {
     const config = getConfiguration(namespace, scope);
-    return config.get<string>('template_file_path', '');
+    return config.get<string>('dialect_file_path', '');
 }

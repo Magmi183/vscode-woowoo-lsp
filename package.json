@@ -87,9 +87,9 @@
           ],
         "configuration": {
             "properties": {
-                "woowoo-vscode.template_file_path": {
+                "woowoo-vscode.dialect_file_path": {
                     "default": "",
-                    "description": "Path to the template that will be used in the LSP.",
+                    "description": "Path to the dialect that will be used in the LSP (for example the FIT-Math dialect).",
                     "type" : "string",
                     "scope": "resource"
                 },

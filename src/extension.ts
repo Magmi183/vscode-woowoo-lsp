@@ -20,54 +20,6 @@ import { createOutputChannel, onDidChangeConfiguration, registerCommand } from '
 
 let lsClient: LanguageClient | undefined;
 
-/*
-function installTreeSitter(interpreterPath: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-        const command = `${interpreterPath} -m pip install tree_sitter`;
-        child_process.exec(command, (error, stdout, stderr) => {
-            if (error) {
-                traceError(`Error installing tree_sitter: ${error}`);
-                reject(error);
-                return;
-            }
-            if (stderr) {
-                traceInfo(`Non-error stderr while installing tree_sitter: ${stderr}`);
-            }
-            else {
-                traceInfo(`tree_sitter installed: ${stdout}`);
-            }
-            resolve();
-        });
-    });
-}*/
-
-function isTreeSitterInstalled(interpreterPath: string): Promise<boolean> {
-    return new Promise((resolve) => {
-        const command = `${interpreterPath} -c "import tree_sitter"`;
-        child_process.exec(command, (error) => {
-            if (error) {
-                resolve(false);
-                return;
-            }
-            resolve(true);
-        });
-    });
-}
-
-
-async function ensureTreeSitterInstalled(interpreterPath: string): Promise<void> {
-    const isInstalled = await isTreeSitterInstalled(interpreterPath);
-    if (!isInstalled) {
-        vscode.window.showWarningMessage(
-            'The tree_sitter package is not installed in the current Python environment. Please install it manually.'
-        );
-        throw new Error('tree_sitter not installed');  // Throw an error here
-    } else {
-        traceInfo('tree_sitter is already installed.');
-    }
-}
-
-
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     // This is required to get server name and module. This should be
     // the first thing that we do in this extension.
@@ -98,8 +50,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     traceLog(`Module: ${serverInfo.module}`);
     traceVerbose(`Full Server Info: ${JSON.stringify(serverInfo)}`);
 
-
-
     const runServer = async () => {
         const interpreter = getInterpreterFromSetting(serverId);
         if (interpreter && interpreter.length > 0) {
@@ -119,9 +69,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
         traceError(
             'Python interpreter missing:\r\n' +
-            '[Option 1] Select python interpreter using the ms-python.python.\r\n' +
-            `[Option 2] Set an interpreter using "${serverId}.interpreter" setting.\r\n` +
-            'Please use Python 3.7 or greater.',
+                '[Option 1] Select python interpreter using the ms-python.python.\r\n' +
+                `[Option 2] Set an interpreter using "${serverId}.interpreter" setting.\r\n` +
+                'Please use Python 3.7 or greater.',
         );
     };
 
@@ -138,19 +88,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             await runServer();
         }),
     );
-    
-    
-    // Install tree_sitter - must be done on the client
-    try {
-        const interpreterDetails = await getInterpreterDetails();
-        if (interpreterDetails.path !== undefined) {
-            await ensureTreeSitterInstalled(interpreterDetails.path.join(' '));
-        }
-    } catch (error) {
-        console.error(`Failed to launch: ${error}`);
-        return; // If tree_sitter installation fails, stop the activation process.
-    }
-
 
     setImmediate(async () => {
         const interpreter = getInterpreterFromSetting(serverId);

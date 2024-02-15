@@ -18,7 +18,7 @@ import {
     getGlobalSettings,
     getWorkspaceSettings,
     ISettings,
-    getTemplateFilePath,
+    getDialectFilePath,
 } from './settings';
 import { getLSClientTraceLevel, getProjectRoot } from './utilities';
 
@@ -90,10 +90,10 @@ export async function restartServer(
     }
     const projectRoot = await getProjectRoot();
     const workspaceSetting = await getWorkspaceSettings(serverId, projectRoot, true);
-    const templateFilePath = getTemplateFilePath(serverId, projectRoot);
+    const dialectFilePath = getDialectFilePath(serverId, projectRoot);
 
     const initializationOptions = {
-        templateFilePath: templateFilePath,
+        dialectFilePath: dialectFilePath,
         settings: await getExtensionSettings(serverId, true),
         globalSettings: await getGlobalSettings(serverId, false),
     };
