@@ -9,9 +9,4 @@
 # run the above commands manually.
 
 # Required packages
-pygls
-packaging
-PyYAML
-
-exceptiongroup
-typing-extensions
+pygls==1.1.1
