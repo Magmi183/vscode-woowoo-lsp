@@ -64,6 +64,5 @@ if __name__ == "__main__":
 
     server_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'woowoo_pygls')
     update_sys_path(server_path)
-    update_sys_path( os.path.join(server_path, "wuff/cmake-build-debug")) # TODO wuff change
 
     main()

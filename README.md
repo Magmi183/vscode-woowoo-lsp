@@ -7,13 +7,11 @@ This extension brings the WooWoo Language Server to VSCode. In addition to that 
 Please follow these steps to setup the extension:
 
 1. **System compatibility**
-    - Unless you are running the extension on one of the following systems, you need to have a C++ compiler installed.
-    - Supported systems (no need for compiler):
-        - Windows x64
-        - Linux x64
-        - *more coming soon*
-        
-2. Install the `tree-sitter` Python package. You can install it into Python virtual environment, system Python or any other Python interpreter you have.
+    - the extension is compatible with almost any system with Python 3.9+ installed
+    - if running from a nonusual system, you will need to have C++ compiler installed to compile the `Wuff` wheel by yourself
+2. Install the `Wuff` Python package. You can install it into Python virtual environment, system Python or any other Python interpreter you have.
+    - `pip install Wuff`
+    - `Wuff` is a set of analyzer tools for WooWoo projects, it is developed in C++ for effectivity
 3. Install the extension from the marketplace 
 4. Open the **command menu** and search for `Python: Select interpreter` command
     - To open the menu, press `Ctrl + Shift + P` or `Cmd + Shift + P` on Mac
