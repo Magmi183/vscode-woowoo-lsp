@@ -9,4 +9,4 @@
 # run the above commands manually.
 
 # Required packages
-pygls==1.1.1
+pygls
