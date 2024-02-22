@@ -10,3 +10,7 @@
 
 # Required packages
 pygls
+
+# for Linux
+exceptiongroup
+typing-extensions
