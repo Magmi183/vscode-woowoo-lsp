@@ -3,7 +3,7 @@
     "displayName": "WooWoo",
     "description": "The WooWoo language server.",
     "icon": "images/woowoo_logo_white_on_black.png",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "serverInfo": {
         "name": "WooWoo VSCode",
         "module": "woowoo-vscode"

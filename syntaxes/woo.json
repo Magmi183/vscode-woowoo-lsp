@@ -65,7 +65,7 @@
             }
         },
         "objectType": {
-            "match": "^(\\.)([A-Z][A-Za-z]+)(:)(\\s*)$",
+            "match": "^(\\.)([A-Z][\\p{L}]+)(:)(\\s*)$",
             "captures": {
                 "1": {
                     "name": "keyword.operator"
@@ -83,7 +83,7 @@
             "name": "string"
         },
         "verboseEnvType": {
-            "match": "(\")(\\.)([A-Za-z0-9_-]+)((\\.)?(\\w+))?",
+            "match": "(\")(\\.)([\\p{L}0-9_-]+)((\\.)?(\\w+))?",
             "captures": {
                 "1": {
                     "name": "string"
@@ -106,7 +106,7 @@
             }
         },
         "shorthandEnv": {
-            "match": "(\")([#@])([A-Za-z0-9_-]+)",
+            "match": "(\")([#@])([\\p{L}0-9_-]+)",
             "captures": {
                 "1": {
                     "name": "string"
@@ -120,7 +120,7 @@
             }
         },
         "shortEnv": {
-            "match": "(\\.)([a-z][a-zA-Z]*)(:)([a-zA-Z_\\-0-9]+)",
+            "match": "(\\.)([a-z][\\p{L}]*)(:)([\\p{L}_\\-0-9/]+)",
             "captures": {
                 "1": {
                     "name": "keyword.operator"
