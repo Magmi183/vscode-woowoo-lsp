@@ -3,7 +3,7 @@
     "displayName": "WooWoo",
     "description": "The WooWoo language server.",
     "icon": "images/woowoo_logo_white_on_black.png",
-    "version": "1.1.7",
+    "version": "1.1.8",
     "serverInfo": {
         "name": "WooWoo VSCode",
         "module": "woowoo-vscode"
@@ -92,29 +92,6 @@
                     "description": "Path to the dialect that will be used in the LSP (for example the FIT-Math dialect).",
                     "type" : "string",
                     "scope": "resource"
-                },
-                "woowoo-vscode.path": {
-                    "default": [],
-                    "description": "When set to a path to woowoo-vscode binary, extension will use that. NOTE: Using this option may slowdown server response time.",
-                    "scope": "resource",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "woowoo-vscode.importStrategy": {
-                    "default": "useBundled",
-                    "description": "Defines where `woowoo-vscode` is imported from. This setting may be ignored if `woowoo-vscode.path` is set.",
-                    "enum": [
-                        "useBundled",
-                        "fromEnvironment"
-                    ],
-                    "enumDescriptions": [
-                        "Always use the bundled version of `woowoo-vscode`.",
-                        "Use `woowoo-vscode` from environment, fallback to bundled version only if `woowoo-vscode` not available in the environment."
-                    ],
-                    "scope": "window",
-                    "type": "string"
                 },
                 "woowoo-vscode.interpreter": {
                     "default": [],
