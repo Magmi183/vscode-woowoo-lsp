@@ -1,3 +1,3 @@
 # Change Log
 
--   Release information can be added here or can be tracked via github release.
+**Please see https://github.com/microsoft/vscode-flake8/releases for the latest release notes.**
