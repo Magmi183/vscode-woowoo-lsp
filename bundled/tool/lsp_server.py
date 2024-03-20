@@ -26,6 +26,7 @@ def update_sys_path(path_to_add: str) -> None:
 
 
 def main():
+    # inspired by: https://github.com/astral-sh/ruff-vscode/tree/main
     from woowoo_pygls import server
 
     logging.config.dictConfig(
