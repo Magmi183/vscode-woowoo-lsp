@@ -19,7 +19,7 @@ Please follow these steps to set up the extension:
     - On non-standard systems, a C++ compiler is required to compile the `wuff` package.
 
 2. **Install `wuff`**:
-    - Install the `wuff` package into a Python virtual environment, the system-wide Python, or any other Python interpreter you have.
+    - Install the `wuff` package into the Python interpreter that the extension will use to launch the language server. This could be a Python virtual environment, the system-wide Python installation, or any other Python interpreter on your system.
     - Use `pip install wuff` to install. `wuff` is a set of analyzer tools for WooWoo projects, developed in C++ for efficiency.
     - The package is available on [PyPI](https://pypi.org/project/wuff/#files).
 
