@@ -7,7 +7,7 @@
         "url": "https://github.com/Magmi183/vscode-woowoo-lsp"
     },
     "icon": "images/woowoo_logo_white_on_black.png",
-    "version": "1.1.9",
+    "version": "1.2.0",
     "serverInfo": {
         "name": "WooWoo VSCode",
         "module": "woowoo-vscode"
